@@ -1,4 +1,4 @@
-package org.kybprototyping.producer;
+package org.kybprototyping.consumer;
 
 import static org.junit.Assert.assertTrue;
 
