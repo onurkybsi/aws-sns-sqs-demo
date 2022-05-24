@@ -11,8 +11,8 @@ import software.amazon.awssdk.services.sqs.model.Message;
 import software.amazon.awssdk.utils.CollectionUtils;
 
 public class App {
-    private static final String AWS_PROFILE = System.getenv("AWS_PROFILE");
     private static final String AWS_REGION = System.getenv("AWS_REGION");
+    private static final String AWS_PROFILE = System.getenv("AWS_PROFILE");
 
     private static SqsClient client = buildSqsClient();
     private static Console console = System.console();

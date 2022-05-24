@@ -11,6 +11,7 @@ import software.amazon.awssdk.services.sns.model.SnsException;
 
 public class App {
     private static final String TOPIC_ARN = System.getenv("TOPIC_ARN");
+    private static final String AWS_REGION = System.getenv("AWS_REGION");
     private static final String AWS_PROFILE = System.getenv("AWS_PROFILE");
 
     private static Console console = System.console();
@@ -26,7 +27,7 @@ public class App {
 
     private static SnsClient buildSnsClient() {
         return SnsClient.builder()
-                .region(Region.EU_CENTRAL_1)
+                .region(Region.of(AWS_REGION))
                 .credentialsProvider(ProfileCredentialsProvider.create(AWS_PROFILE))
                 .build();
     }
