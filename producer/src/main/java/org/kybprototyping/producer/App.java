@@ -10,9 +10,12 @@ import software.amazon.awssdk.services.sns.model.PublishResponse;
 import software.amazon.awssdk.services.sns.model.SnsException;
 
 public class App {
-    private static final String TOPIC_ARN = System.getenv("TOPIC_ARN");
+    private static final String AWS_ACCOUNT_ID = System.getenv("AWS_ACCOUNT_ID");
     private static final String AWS_REGION = System.getenv("AWS_REGION");
+    private static final String SNS_TOPIC_NAME = System.getenv("SNS_TOPIC_NAME");
     private static final String AWS_PROFILE = System.getenv("AWS_PROFILE");
+    private static final String TOPIC_ARN = String.format("arn:aws:sns:%s:%s:%s", AWS_REGION, AWS_ACCOUNT_ID,
+            SNS_TOPIC_NAME);
 
     private static Console console = System.console();
     private static SnsClient client = buildSnsClient();
