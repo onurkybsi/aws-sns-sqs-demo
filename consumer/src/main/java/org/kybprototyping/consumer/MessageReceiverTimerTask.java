@@ -9,7 +9,9 @@ import software.amazon.awssdk.services.sqs.model.ReceiveMessageResponse;
 import software.amazon.awssdk.services.sqs.model.SqsException;
 
 public class MessageReceiverTimerTask extends TimerTask {
-    private static final String QUEUE_URL = System.getenv("QUEUE_URL");
+    private static final String QUEUE_URL = String.format("https://sqs.%s.amazonaws.com/%s/%s",
+            System.getenv("AWS_REGION"),
+            System.getenv("AWS_ACCOUNT_ID"), System.getenv("SQS_QUEUE_NAME"));
 
     private static ReceiveMessageRequest receiveRequest = ReceiveMessageRequest.builder()
             .queueUrl(QUEUE_URL)

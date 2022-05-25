@@ -10,9 +10,9 @@ test() {
 
 run() {
     echo "Consumer is running..."
-    ENV_FILE=./.env
+    ENV_FILE=../.env
     if [ -f "$ENV_FILE" ]; then
-        export $(grep -vE "^(#.*|\s*)$" .env) && mvn exec:java -Dexec.mainClass="org.kybprototyping.consumer.App"
+        export $(grep -vE "^(#.*|\s*)$" ../.env) && mvn exec:java -Dexec.mainClass="org.kybprototyping.consumer.App"
     else
         echo ".env does not exist!"
     fi
@@ -30,6 +30,10 @@ else
     echo "Usage: bash .sh [FLAGS]"
     echo
     echo "Flags:"
+    echo "build  Use to build the consumer"
+    echo
+    echo "test   Use to test the consumer"
+    echo
     echo "run    Use to run the consumer"
     echo
     exit 1
